@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_ENV=dev nodemon --exec babel-node app.js",
+    "test": "NODE_ENV=test"
   },
   "author": "",
   "license": "ISC",

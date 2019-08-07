@@ -2,19 +2,19 @@ const express = require('express')
 import bodyParser from 'body-parser';
 const app = express();
 import { routes } from './routes';
+var cors = require('cors')
 
-require('dotenv/config')
 const db = require("./models");
-
+const config = require('./config')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(cors())
 
 //Test DB connection
 db.authenticate()
-.then(()=> {
+.then(()=> {  
 console.log(`successfully connected to the ${process.env.DATABASE} `)
-db.sync({ force: true, logging: true})}
+db.sync({ force: false, logging: true})}
 )
 .catch(err=>console.log('Error' + err))
 
@@ -25,6 +25,6 @@ app.get('/', (req, res) => {
   res.send('Ekalaamu!')
 });
 
-const PORT = process.env.PORT || 3000
+const PORT = config.app.port
 
 app.listen(PORT, ()=>console.log(`server has started on port ${PORT}`));
