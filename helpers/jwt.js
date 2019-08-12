@@ -10,3 +10,4 @@ export const signToken = userId => {
       process.env.JWT_SECRET
     );
   }
+

@@ -1,9 +1,12 @@
 const Sequelize = require('sequelize')
 
+const config = require('../config')
+
 module.exports = new Sequelize(
-  process.env.DATABASE,
-  process.env.DATABASE_USER,
-  process.env.DATABASE_PASSWORD,
+  config.db.database,
+  config.db.databaseUser,
+  config.db.databasePassword,
+
   {
     dialect: 'postgres',
   },

@@ -43,3 +43,4 @@ export const User = connection.define(
     }
   }
 );
+
