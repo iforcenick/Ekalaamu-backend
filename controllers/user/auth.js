@@ -1,7 +1,7 @@
 import sequelize from "sequelize";
 
 import connection from "../../models";
-import { User } from "../../models/user";
+import  { User }  from "../../models/user";
 import { Actions } from "../../helpers/actions";
 import { signToken } from "../../helpers/jwt";
 import bcrypt from "bcrypt";
@@ -11,6 +11,7 @@ const Op = sequelize.Op;
 
 export default class AuthController {
   static signUp = (req, res, next) => {
+ 
     db.then(async resp => {
       User.findAll({
         where: {
@@ -19,6 +20,7 @@ export default class AuthController {
           }
         }
       }).done(
+
         users =>
           users.length
             ? res.status(400).json({ errors: ['Email already in use.'] })

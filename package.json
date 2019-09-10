@@ -4,27 +4,35 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=dev nodemon --exec babel-node app.js",
-    "test": "NODE_ENV=test"
+    "start": "NODE_ENV=production npm run migrate  && node --require babel app.js",
+    "dev": "NODE_ENV=dev nodemon --exec babel-node app.js",
+    "migrate": "NODE_ENV=production node_modules/.bin/sequelize db:migrate",
+    "test": "NODE_ENV=test",
+    "sequelize": "dotenv sequelize"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/node": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.6.2",
+    "babel-node": "0.0.1-security",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "express-promise-router": "^3.0.3",
+    "install": "^0.13.0",
     "jsonwebtoken": "^8.5.1",
+    "npm": "^6.11.3",
     "pg": "^7.11.0",
-    "sequelize": "^5.10.2"
+    "sequelize": "^5.10.2",
+    "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/node": "^7.5.5",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
     "nodemon": "^1.19.1"
   }
 }
