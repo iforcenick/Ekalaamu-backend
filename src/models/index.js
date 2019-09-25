@@ -1,18 +1,16 @@
 const Sequelize = require("sequelize");
 require("dotenv").config();
-const config = require("../config/config");
-let sequelize;
+const config = require("../../config/config");
+let connection;
 
-console.log("-------------------");
-console.log(config);
 if (config.use_env_variable) {
   try {
-    sequelize = new Sequelize(config.use_env_variable, config.db);
+   connection = new Sequelize(config.db.databaseUrl);
   } catch (e) {
     console.log(e);
   }
 } else {
-  sequelize = new Sequelize(
+ connection = new Sequelize(
     config.db.database,
     config.db.databaseUser,
     config.db.databasePassword,
@@ -22,5 +20,4 @@ if (config.use_env_variable) {
     }
   );
 }
-
-module.exports = sequelize;
+module.exports =connection;

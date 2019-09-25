@@ -1,8 +1,9 @@
-// require('dotenv/config')
+
 require("dotenv").config();
 const environment = process.env.NODE_ENV || "production";
 
 const production = {
+  compact: true,
   app: {
     port: process.env.PORT || 3000
   },
@@ -13,6 +14,7 @@ const production = {
     database: process.env.DATABASE,
     databasePassword: process.env.DATABASE_PASSWORD,
     dialect: "postgres"
+  
   }
 };
 

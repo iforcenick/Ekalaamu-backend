@@ -56,9 +56,9 @@ export default class AuthController {
         
           bcrypt.compare(req.body.password, users.dataValues.password, (result,err)=>{
             if(err===false){
-              res.status(404).json({Errors: "Password and email do not match for this user"})
+              return res.status(404).json({Errors: "Password and email do not match for this user"})
             }
-            res.status(200).json({success: "Successfully logged in", token: signToken(users.dataValues.id)})
+            return res.status(200).json({success: "Successfully logged in", token: signToken(users.dataValues.id)})
           })
         }
       )
