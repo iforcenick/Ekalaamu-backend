@@ -45,6 +45,6 @@ const config = {
   dev,
   test
 };
-const env = config[environment];
+const env = config['dev'];
 
 module.exports = { ...env.db, ...env };

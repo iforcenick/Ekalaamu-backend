@@ -14,7 +14,7 @@ app.use(cors())
 db.authenticate()
 .then(()=> {  
 console.log(`successfully connected to the ${process.env.DATABASE} `)
-db.sync({ force: false, logging: true})}
+db.sync({ force: true, logging: true})}
 )
 .catch(err=>console.log('Error' + err))
 
@@ -28,3 +28,5 @@ app.get('/', (req, res) => {
 const PORT = config.app.port
 
 app.listen(PORT, ()=>console.log(`server has started on port ${PORT}`));
+
+export default app;

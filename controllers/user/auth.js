@@ -1,5 +1,5 @@
 import connection from "../../models";
-import  { User }  from "../../models/user";
+import { User } from "../../models/user";
 import { Actions } from "../../helpers/actions";
 import { signToken, decodeToken } from "../../helpers/jwt";
 import { sendMail, verificationEmail } from "../../helpers/mailer";

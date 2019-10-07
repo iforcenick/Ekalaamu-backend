@@ -1,5 +1,6 @@
-import * as JWT from 'jsonwebtoken'
-export const signToken = userId => {
+import * as JWT from 'jsonwebtoken';
+
+const signToken = userId => {
     return JWT.sign(
       {
         iss: process.env.JWT_ISSUER,
@@ -11,3 +12,6 @@ export const signToken = userId => {
     );
   }
 
+const decodeToken = token => JWT.verify(token, process.env.JWT_SECRET).sub;
+
+export { signToken, decodeToken };
