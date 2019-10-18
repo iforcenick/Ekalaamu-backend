@@ -1,36 +1,37 @@
-import sequelize from "sequelize";
+import Sequelize from "sequelize";
 import bcrypt from "bcrypt";
-import connection from ".";
+import connection from "./index";
+
 export const User = connection.define(
   "User",
   {
     id: {
-      type: sequelize.STRING,
+      type: Sequelize.STRING,
       unigue: true,
       primaryKey: true
     },
     firstname: {
-      type: sequelize.STRING,
+      type: Sequelize.STRING,
       allowNull: false
     },
     lastname: {
-      type: sequelize.STRING,
+      type: Sequelize.STRING,
       allowNull: false
     },
     email: {
-      type: sequelize.STRING,
+      type: Sequelize.STRING,
       validate: {
         isEmail: { args: true, msg: "Provide a valid email." }
       }
     },
     password: {
-      type: sequelize.STRING,
+      type: Sequelize.STRING,
       validate: {
         len: { args: [8], msg: "Password should be a minimum of 8 characters." }
       }
     },
     verified: {
-      type: sequelize.BOOLEAN,
+      type: Sequelize.BOOLEAN,
       defaultValue: false
     }
   },
@@ -43,4 +44,3 @@ export const User = connection.define(
     }
   }
 );
-

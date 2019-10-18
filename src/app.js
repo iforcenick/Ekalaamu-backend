@@ -1,11 +1,11 @@
-const express = require('express')
+import express from 'express'
 import bodyParser from 'body-parser';
 const app = express();
 import { routes } from './routes';
-var cors = require('cors')
+import cors from 'cors'
+import db from './models/index'
+import config from '../config/config';
 
-const db = require("./models");
-const config = require('./config')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())

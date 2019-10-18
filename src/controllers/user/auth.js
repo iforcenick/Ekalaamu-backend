@@ -1,7 +1,7 @@
 import sequelize from "sequelize";
 
 import connection from "../../models";
-import { User } from "../../models/user";
+import  { User }  from "../../models/user";
 import { Actions } from "../../helpers/actions";
 import { signToken } from "../../helpers/jwt";
 import bcrypt from "bcrypt";
@@ -11,6 +11,7 @@ const Op = sequelize.Op;
 
 export default class AuthController {
   static signUp = (req, res, next) => {
+ 
     db.then(async resp => {
       User.findAll({
         where: {
@@ -19,6 +20,7 @@ export default class AuthController {
           }
         }
       }).done(
+
         users =>
           users.length
             ? res.status(400).json({ errors: ['Email already in use.'] })
@@ -54,9 +56,9 @@ export default class AuthController {
         
           bcrypt.compare(req.body.password, users.dataValues.password, (result,err)=>{
             if(err===false){
-              res.status(404).json({Errors: "Password and email do not match for this user"})
+              return res.status(404).json({Errors: "Password and email do not match for this user"})
             }
-            res.status(200).json({success: "Successfully logged in", token: signToken(users.dataValues.id)})
+            return res.status(200).json({success: "Successfully logged in", token: signToken(users.dataValues.id)})
           })
         }
       )
