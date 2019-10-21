@@ -6,7 +6,9 @@ const sendMail = (emailBody, linkType, res) => {
 
   sendGrid
     .send(emailBody)
-    .then(() => res.status(201).json({ message: `${linkType} link sent successfully. Please check your email` }))
+    .then(() => res.status(201).json({
+      message: `${linkType} link sent successfully. Please check your email`
+    }))
     .catch(err => res.status(500).json({ error: "Email sending failed. Try again" }));
 };
 

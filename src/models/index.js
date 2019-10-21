@@ -1,23 +1,25 @@
-const Sequelize = require("sequelize");
-require("dotenv").config();
-const config = require("../../config/config");
+import { Sequelize } from 'sequelize';
+import config from '../../config/config';
+
+require('dotenv').config();
+
 let connection;
 
 if (config.use_env_variable) {
   try {
-   connection = new Sequelize(config.db.databaseUrl);
+    connection = new Sequelize(config.db.databaseUrl);
   } catch (e) {
     console.log(e);
   }
 } else {
- connection = new Sequelize(
+  connection = new Sequelize(
     config.db.database,
     config.db.databaseUser,
     config.db.databasePassword,
 
     {
-      dialect: "postgres"
-    }
+      dialect: 'postgres',
+    },
   );
 }
-module.exports =connection;
+module.exports = connection;
