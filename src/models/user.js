@@ -10,6 +10,10 @@ export const User = connection.define(
       unigue: true,
       primaryKey: true,
     },
+    strategy: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
     firstname: {
       type: Sequelize.STRING,
       allowNull: false,
@@ -20,15 +24,11 @@ export const User = connection.define(
     },
     email: {
       type: Sequelize.STRING,
-      validate: {
-        isEmail: { args: true, msg: 'Provide a valid email.' },
-      },
+      allowNull: true,
     },
     password: {
       type: Sequelize.STRING,
-      validate: {
-        len: { args: [8], msg: 'Password should be a minimum of 8 characters.' },
-      },
+      allowNull: true,
     },
     verified: {
       type: Sequelize.BOOLEAN,
@@ -38,10 +38,11 @@ export const User = connection.define(
   {
     hooks: {
       afterValidate: (user) => {
-        // eslint-disable-next-line no-param-reassign
-        user.id = bcrypt.hashSync(user.email, 8);
-        // eslint-disable-next-line no-param-reassign
-        user.password = bcrypt.hashSync(user.password, 8);
+        if (user.strategy === 'local') {
+          user.id = bcrypt.hashSync(user.email, 8);
+          user.password = bcrypt.hashSync(user.password, 8);
+        }
+        user.id = user.socialId;
       },
     },
   },

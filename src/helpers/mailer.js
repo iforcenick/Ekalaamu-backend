@@ -9,7 +9,7 @@ const sendMail = (emailBody, linkType, res) => {
     .then(() => res.status(201).json({
       message: `${linkType} link sent successfully. Please check your email`
     }))
-    .catch(err => res.status(500).json({ error: "Email sending failed. Try again" }));
+    .catch(err => console.log(err));
 };
 
 // Email content functions
