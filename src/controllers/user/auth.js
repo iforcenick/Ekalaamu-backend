@@ -41,7 +41,7 @@ export default class AuthController {
 
     const user = await Actions.findData(User, { email });
     if (!user) {
-      return res.status(404).json({ Errors: "User doesn't exist." });
+      return res.status(404).json({ Errors: "User with the provided email doesn't exist." });
     }
     if (!user.verified) {
       return res.status(403).json({
