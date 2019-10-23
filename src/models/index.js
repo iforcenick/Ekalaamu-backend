@@ -5,7 +5,8 @@ require('dotenv').config();
 
 let connection;
 
-if (config.use_env_variable) {
+if (process.env.NODE_ENV=== 'production') {
+
   try {
     connection = new Sequelize(config.db.databaseUrl);
   } catch (e) {

@@ -24,6 +24,7 @@
     "@babel/preset-env": "^7.6.2",
     "@babel/register": "^7.6.2",
     "@babel/runtime": "^7.6.2",
+    "@babel/plugin-transform-runtime": "^7.6.2",
     "@sendgrid/mail": "^6.4.0",
     "babel-node": "0.0.1-security",
     "bcryptjs": "^2.4.3",
