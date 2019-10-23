@@ -22,8 +22,11 @@ describe('/POST signup', () => {
     sandBox.stub(User, 'create').returns(newUser);
     sandBox.stub(sendGrid, 'send').resolves({});
 
-    const response = await chai.request(server).post('/api/v1/signup').send(signupData);
-    expect(response).to.have.status(201);
+    const response = await chai
+      .request(server)
+      .post('/api/v1/signup')
+      .send(signupData);
+    expect(response).to.have.status(200);
   });
 
   it('should fail to send email', async () => {
@@ -31,14 +34,20 @@ describe('/POST signup', () => {
     sandBox.stub(User, 'create').returns(newUser);
     sandBox.stub(sendGrid, 'send').throws(['something went wrong']);
 
-    const response = await chai.request(server).post('/api/v1/signup').send(signupData);
+    const response = await chai
+      .request(server)
+      .post('/api/v1/signup')
+      .send(signupData);
     expect(response).to.have.status(500);
   });
 
   it('should not register a user more than once', async () => {
     sandBox.stub(User, 'findAll').returns([{}]);
 
-    const response = await chai.request(server).post('/api/v1/signup').send(signupData);
+    const response = await chai
+      .request(server)
+      .post('/api/v1/signup')
+      .send(signupData);
     expect(response).to.have.status(400);
   });
 });

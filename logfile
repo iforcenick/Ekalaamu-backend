@@ -1,0 +1,7 @@
+2019-10-24 10:46:39.775 EAT [4174] LOG:  listening on IPv6 address "::1", port 5432
+2019-10-24 10:46:39.775 EAT [4174] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-10-24 10:46:39.776 EAT [4174] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2019-10-24 10:46:39.828 EAT [4175] LOG:  database system was shut down at 2019-10-23 19:58:37 EAT
+2019-10-24 10:46:39.857 EAT [4174] LOG:  database system is ready to accept connections
+2019-10-24 11:14:00.434 EAT [5520] LOG:  could not receive data from client: Connection reset by peer
+2019-10-24 11:14:56.261 EAT [5653] LOG:  could not receive data from client: Connection reset by peer
