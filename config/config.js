@@ -4,9 +4,8 @@ require('dotenv').config();
 const environment = process.env.NODE_ENV || 'production';
 
 const production = {
-  compact: true,
   app: {
-    port: process.env.PORT || 3000,
+    port: process.env.PORT ,
   },
   db: {
     use_env_variable: 'DATABASE_URL',
@@ -46,6 +45,6 @@ const config = {
   dev,
   test,
 };
-const env = config['dev'];
+const env = config[environment];
 
 module.exports = { ...env.db, ...env };
