@@ -56,4 +56,24 @@ export default class AuthController {
       })
       : res.status(400).json({ Errors: 'Email or Password is invalid.' });
   };
+
+  static googleAuth = (req, res) => {
+    this.auth(res, req.user);
+  };
+
+  static facebookAuth = (req, res) => {
+    this.auth(res, req.user);
+  };
+
+  static twitterAuth = (req, res) => {
+    this.auth(res, req.user);
+  };
+
+  static auth = (res, data) => {
+    const { id, firstname } = data;
+    return res.status(200).send({
+      firstname,
+      token: signToken(id),
+    });
+  }
 }
