@@ -1,6 +1,7 @@
 const newUser = {
   id: 12,
   firstname: 'testFistname',
+  email: 'testuser@dev.com',
   verified: true,
   update: async () => null,
   validatePassword: async () => true,

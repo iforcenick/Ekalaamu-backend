@@ -43,6 +43,7 @@ node_modules/
 jspm_packages/
 build/
 .nyc_output/
+.history
 
 # TypeScript v1 declaration files
 typings/
