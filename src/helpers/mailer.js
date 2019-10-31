@@ -1,15 +1,17 @@
 import sendGrid from "@sendgrid/mail";
 
 // Method for sending emails
-const sendMail = (emailBody, linkType, res) => {
+const sendMail = async (emailBody, linkType, res) => {
   sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
 
-  sendGrid
-    .send(emailBody)
-    .then(() => res.status(200).json({
+  try {
+    await sendGrid.send(emailBody);
+    return res.status(200).send({
       message: `${linkType} link sent successfully. Please check your email`
-    }))
-    .catch(err => console.log(err));
+    });
+  }catch (e) {
+    return res.status(500).send(e);
+  }
 };
 
 // Email content functions

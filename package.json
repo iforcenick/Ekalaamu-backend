@@ -18,14 +18,15 @@
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/runtime": "^7.6.2",
-    "@babel/plugin-transform-runtime": "^7.6.2",
     "@sendgrid/mail": "^6.4.0",
     "babel-node": "0.0.1-security",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "cloudinary": "^1.16.0",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "express-jwt": "^5.3.1",
     "express-promise-router": "^3.0.3",
     "express-validator": "^6.2.0",
     "install": "^0.13.0",
@@ -38,7 +39,9 @@
     "passport-twitter-token": "^1.3.0",
     "pg": "^7.11.0",
     "sequelize": "^5.21.1",
-    "sequelize-cli": "^5.5.1"
+    "sequelize-cli": "^5.5.1",
+    "slug": "^1.1.0",
+    "unique-keygen": "^1.1.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.2",

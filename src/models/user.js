@@ -41,6 +41,7 @@ export const User = connection.define(
         if (user.strategy === 'local') {
           user.id = bcrypt.hashSync(user.email, 8);
           user.password = bcrypt.hashSync(user.password, 8);
+          return;
         }
         user.id = user.socialId;
       },

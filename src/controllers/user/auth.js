@@ -16,11 +16,12 @@ export default class AuthController {
     if (users.length) {
       return res.status(400).json({ errors: [{ error: 'Email already in use.' }] });
     }
-    const user = await Actions.addData(User, req.body, [
+    const user = await Actions.addData(User, Object.assign(req.body, { strategy: 'local' }), [
       'id',
       'firstname',
       'lastname',
       'email',
+      'strategy',
       'password',
     ]);
     const token = signToken(user.id, ONE_HOUR);
