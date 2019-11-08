@@ -26,7 +26,14 @@ if (process.env.NODE_ENV === 'dev') {
 }
 
 // All routes
-app.use('/api/v1/', routes());
+app.use('/api/v1', routes());
+
+app.use((err, req, res, next) => {
+  if (err.name === 'UnauthorizedError') {
+    res.status(401).send({ UnauthorizedError: err.message });
+  }
+  next();
+});
 
 app.get('/', (req, res) => {
   res.send('Ekalaamu!');

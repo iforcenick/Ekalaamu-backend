@@ -1,4 +1,5 @@
 import * as JWT from 'jsonwebtoken';
+import expressJwt from 'express-jwt';
 
 const ONE_HOUR = (new Date().getTime() + 60 * 60 * 1000) / 1000;
 
@@ -26,4 +27,12 @@ const decodeToken = (token) => {
   return subject;
 };
 
-export { signToken, decodeToken, ONE_HOUR };
+const requireSignIn = expressJwt({
+  secret: process.env.JWT_SECRET,
+  issuer: process.env.JWT_ISSUER,
+  requestProperty: 'auth',
+});
+
+export {
+  signToken, decodeToken, ONE_HOUR, requireSignIn,
+};

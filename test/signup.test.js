@@ -32,7 +32,7 @@ describe('/POST signup', () => {
   it('should fail to send email', async () => {
     sandBox.stub(User, 'findAll').returns([]);
     sandBox.stub(User, 'create').returns(newUser);
-    sandBox.stub(sendGrid, 'send').throws(['something went wrong']);
+    sandBox.stub(sendGrid, 'send').throws('something went wrong');
 
     const response = await chai
       .request(server)

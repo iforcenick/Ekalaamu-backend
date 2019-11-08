@@ -5,7 +5,7 @@ const environment = process.env.NODE_ENV || 'production';
 
 const production = {
   app: {
-    port: process.env.PORT ,
+    port: process.env.PORT,
   },
   db: {
     use_env_variable: 'DATABASE_URL',
