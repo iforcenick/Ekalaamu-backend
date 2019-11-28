@@ -16,14 +16,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 // Test DB connection
-if (process.env.NODE_ENV === 'dev') {
-  db.authenticate()
-    .then(() => {
-      console.log(`successfully connected to the ${process.env.DATABASE} `);
-      db.sync({ force: true, logging: false });
-    })
-    .catch((err) => console.log(`Error${err}`));
-}
+
+  if (process.env.NODE_ENV === 'dev') {
+    db.authenticate()
+      .then(() => {
+        console.log(`successfully connected to the ${process.env.DATABASE} `);
+        // db.sync({ force: true, logging: false });
+      })
+      .catch((err) => console.log(`Error${err}`));
+  }
+
 
 // All routes
 app.use('/api/v1', routes());

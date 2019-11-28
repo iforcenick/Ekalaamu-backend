@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+
+  database:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: aye
+      POSTGRES_PASSWORD: ekalaamu
+      POSTGRES_DB: ekalaamu
+    networks:
+      - backend
+
+  api:
+    image: ekalaamu-app
+    build: .
+    networks:
+      - backend
+    ports:
+      - '8000:${PORT}'
+    volumes:
+      - ./:/usr/src/app
+    depends_on:
+      - database
+    environment:
+      DATABASE_HOST: host.docker.internal
+    env_file:
+      - .env
+
+networks:
+  backend:
+    driver: bridge

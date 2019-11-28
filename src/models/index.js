@@ -13,11 +13,12 @@ if (process.env.NODE_ENV === 'production') {
   }
 } else {
   connection = new Sequelize(
-    config.db.database,
-    config.db.databaseUser,
-    config.db.databasePassword,
+    process.env.DATABASE_URL || config.db.database,
+    config.db.databaseUser || process.env.DATABASE_USER,
+    config.db.databasePassword || process.env.DATABASE_PASSWORD,
 
     {
+      host: process.env.DATABASE_HOST || 'localhost',
       dialect: 'postgres',
     },
   );
